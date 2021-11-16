@@ -590,7 +590,7 @@
 #define PID_K1 0.95      // Smoothing factor within any PID loop
 
 #if ENABLED(PIDTEMP)
-  //#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
+  #define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
   //#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
@@ -603,9 +603,9 @@
     #define DEFAULT_Ki_LIST {   2.49,   2.49 }
     #define DEFAULT_Kd_LIST {  69.41,  69.41 }
   #else
-    #define DEFAULT_Kp  20.30
-    #define DEFAULT_Ki   1.82
-    #define DEFAULT_Kd  56.54
+    #define DEFAULT_Kp  23.58
+    #define DEFAULT_Ki   1.83
+    #define DEFAULT_Kd  75.81
   #endif
 #endif // PIDTEMP
 
@@ -929,7 +929,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.058, 80.058, 399.29, 826 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.058, 80.058, 399.29, 820 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -949,7 +949,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 400, 400, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -964,9 +964,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          400    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  10000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   700    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -985,7 +985,7 @@
   //#define DEFAULT_JJERK  0.3
   //#define DEFAULT_KJERK  0.3
 
-  //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
+  #define TRAVEL_EXTRA_XYJERK 8.0     // Additional jerk allowance for all travel moves
 
   //#define LIMITED_JERK_EDITING        // Limit edit via M205 or LCD to DEFAULT_aJERK * 2
   #if ENABLED(LIMITED_JERK_EDITING)
@@ -993,7 +993,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    1  // May be used by Linear Advance
+#define DEFAULT_EJERK    10  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -1181,7 +1181,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -25, 30, -0.510 }
+#define NOZZLE_TO_PROBE_OFFSET { -25, 30, -0.250 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
